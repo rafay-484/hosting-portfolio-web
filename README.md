@@ -1,16 +1,25 @@
-# 🚀 DevSecOps Workshop
+# 🚀 K8s Hosted Portfolio Website
 
-![DevSecOps](https://img.shields.io/badge/DevSecOps-Pipeline-blue)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-Minikube-green)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
+![Express](https://img.shields.io/badge/Express-Node.js-black)
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-orange)
 
 ## 📋 Project Overview
+A fully containerized personal portfolio website running on a local Kubernetes cluster! This project represents my shift towards DevOps and Cloud Engineering. It showcases an interactive portfolio, serving a static layout orchestrated via Docker and Minikube.
 
-A complete DevSecOps pipeline implementation with Docker, Kubernetes (Minikube), and GitHub Actions, deploying a Node.js Express application.
+### About Me
+**Rafay Ahmad**  
+*Computer Science Student | Lahore | Aspiring DevOps & Cloud Engineer*  
+Currently in my last semester, looking for opportunities to build scalable systems, CI/CD pipelines, and cloud-native infrastructure!
+
+## 🚀 Featured Projects Highlights
+- ☁️ **AWS Static Website:** Highly available static website on AWS.
+- 🔐 **CI/CD Pipeline integration:** Complete DevSecOps methodologies embedded natively.
+- 📱 **AI Study Companion / Language App:** Fine-tuned XLM-RoBERTa (Urdu/Punjabi) and Gemini API integration.
+- 🍊 **Citrus Disease Detection:** Gradient boosting trained on a 2000+ dataset.
 
 ## 🛠️ Technology Stack
-
 | Technology | Version | Purpose |
 |------------|---------|---------|
 | Ubuntu | 24.04 LTS | Operating System (WSL2) |
@@ -21,28 +30,20 @@ A complete DevSecOps pipeline implementation with Docker, Kubernetes (Minikube),
 | GitHub Actions | Latest | CI/CD Pipeline |
 
 ## 📁 Project Structure
-devsecops-workshop/
+```text
+hosting-portfolio-web/
 ├── 📂 app/
-│ ├── 📄 Dockerfile # Container configuration
-│ ├── 📄 index.js # Node.js application
-│ └── 📄 package.json # Dependencies
+│   ├── 📄 Dockerfile       # Instructions to build the Node.js/Express image
+│   ├── 📄 index.js         # The Portfolio web application source code
+│   └── 📄 package.json     # Node dependencies
 ├── 📂 k8s/
-│ ├── 📄 deployment.yaml # Kubernetes deployment
-│ └── 📄 service.yaml # Kubernetes service
+│   ├── 📄 deployment.yaml  # Kubernetes replicas & setup
+│   └── 📄 service.yaml     # Kubernetes network routing (NodePort 3000)
 ├── 📂 .github/
-│ └── 📂 workflows/
-│ └── 📄 ci.yml # GitHub Actions pipeline
-├── 📄 .gitignore # Git ignore rules
-└── 📄 README.md # Project documentation
-
-
-## 🚀 Application Features
-
-- Simple Express.js web server
-- Health check endpoint
-- Containerized with Docker
-- Orchestrated with Kubernetes
-- CI/CD with GitHub Actions
+│   └── 📂 workflows/
+│       └── 📄 ci.yml       # GitHub Actions pipeline
+└── 📄 README.md            # This documentation
+```
 
 ## 💻 Local Development Setup
 
@@ -50,79 +51,57 @@ devsecops-workshop/
 - Docker
 - Minikube
 - kubectl
-- Node.js (for local testing)
 
 ### Installation Steps
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/rafay-484/Devsecops-Workshop.git
-   cd Devsecops-Workshop
+   git clone https://github.com/rafay-484/hosting-portfolio-web.git
+   cd hosting-portfolio-web
+   ```
 
-2. Build Docker image
+2. **Build Docker image**
+   ```bash
+   docker build -t portfolio-local:latest -f app/Dockerfile app/
+   ```
 
-bash
-docker build -t devsecops-local:latest -f app/Dockerfile app/
+3. **Deploy to Kubernetes**
+   ```bash
+   # Load image to Minikube
+   minikube image load portfolio-local:latest
 
-3.Test locally
+   # Apply Kubernetes manifests
+   kubectl apply -f k8s/
 
-bash
-docker run -d -p 3000:3000 --name test-app devsecops-local:latest
-curl http://localhost:3000
+   # Get application URL
+   minikube service portfolio-svc --url
+   ```
 
-4.Deploy to Kubernetes
-
-bash
-# Load image to Minikube
-minikube image load devsecops-local:latest
-
-# Apply Kubernetes manifests
-kubectl apply -f k8s/
-
-# Get application URL
-minikube service devsecops-svc --url
-
-🔄 CI/CD Pipeline
+## 🔄 CI/CD Pipeline
 The GitHub Actions workflow automatically:
-
 ✅ Validates file structure
-
 ✅ Checks Dockerfile existence
-
 ✅ Verifies Kubernetes manifests
-
 ✅ Confirms package.json dependencies
 
-📊 API Endpoints
-Endpoint	Method	Description
-/	 GET	Returns welcome message
-/health	 GET	Health check endpoint
+## 💻 How to Run This Project Next Time (WSL2)
+If you ever restart your PC or close your terminal, follow these simple steps to spin the portfolio back up:
 
-🧪 Testing
-bash
-# Test the deployed application
-curl http://<service-url>:<port>
-# Expected: "DevSecOps Workshop Working!"
-
-## Run Next Time (WSL2)
-
-Store and run from project root:
-
+Navigate to project root:
 ```bash
-cd ~/devsecops-workshop
-chmod +x start-devsecops.sh
-./start-devsecops.sh
+cd ~/projects/hosting-portfolio-web
+chmod +x start-portfolio.sh
+./start-portfolio.sh
 ```
 
 If Docker is not running, use:
-
 ```bash
 sudo service docker start
-docker info
 ```
-
 Then run again:
-
 ```bash
-./start-devsecops.sh
+./start-portfolio.sh
 ```
+
+## 🤝 Let's Connect
+Feel free to open an issue or reach out if you're hiring for DevOps and Cloud roles!

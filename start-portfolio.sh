@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "Starting DevSecOps Workshop..."
+echo "Starting Portfolio..."
 
 # Move to project root (directory containing this script)
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -35,7 +35,7 @@ fi
 
 # Ensure deployment is running
 echo "Checking Kubernetes deployment..."
-if ! kubectl get pods 2>/dev/null | grep -q "devsecops-app"; then
+if ! kubectl get pods 2>/dev/null | grep -q "portfolio-app"; then
     kubectl apply -f k8s/
 fi
 
@@ -46,4 +46,4 @@ echo ""
 
 echo "Starting port-forward (Ctrl+C to stop)..."
 echo "Access URL: http://localhost:3000"
-kubectl port-forward service/devsecops-svc 3000:3000
+kubectl port-forward service/portfolio-svc 3000:3000

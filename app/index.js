@@ -123,7 +123,7 @@ app.get('/', (req, res) => {
               <h2><span class="accent-green">☁️</span> Cloud & DevOps Projects</h2>
               <ul>
                 <li><strong>AWS Static Website:</strong> Hosted a highly available static website using AWS cloud infrastructure.</li>
-                <li><strong>DevSecOps Workshop:</strong> Designed this hands-on Kubernetes pipeline and deployment project integrating security best practices.</li>
+                <li><strong>Portfolio:</strong> Designed this hands-on Kubernetes pipeline and deployment project integrating security best practices.</li>
                 <li><strong>Portfolio Hosting:</strong> Created and deployed this beautiful portfolio website inside a K8s cluster via Docker!</li>
               </ul>
             </section>

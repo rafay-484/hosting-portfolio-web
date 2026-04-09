@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: devsecops-app
+  name: portfolio-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: devsecops-app
+      app: portfolio-app
   template:
     metadata:
       labels:
-        app: devsecops-app
+        app: portfolio-app
     spec:
       containers:
       - name: web
-        image: devsecops-local:latest
+        image: portfolio-local:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 3000
