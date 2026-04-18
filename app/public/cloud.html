@@ -20,26 +20,23 @@
         
         <div style="margin-bottom: 2rem;">
           <h3><span class="accent">1.</span> Portfolio Website Infrastructure Deployment</h3>
-          <p>Automated infrastructure provisioning using Terraform to design and deploy a custom AWS VPC with public subnets, Internet Gateways, and route tables.</p>
-          <ul>
-            <li>Automated EC2 instance provisioning and configuration management using <code>user_data</code> bootstrap bash scripts and strict security group rules.</li>
-            <li>Implemented secure state management by configuring an S3 bucket as a Terraform remote state backend, enabling team collaboration and state locking.</li>
-            <li>Ensured security best practices are followed by applying the principle of least-privilege for IAM roles and network configurations.</li>
-          </ul>
+          <p>Developed a multi-page professional website hosted on AWS. Provisioned the entire network and EC2 infrastructure from scratch using Terraform. Implemented a fully automated CI/CD pipeline with GitHub Actions to deploy code updates seamlessly.</p>
         </div>
         
         <div style="margin-bottom: 2rem;">
           <h3><span class="accent">2.</span> DevSecOps Automated Deployment Pipeline</h3>
-          <p>Created a comprehensive DevSecOps pipeline automating the deployment process.</p>
+          <p>Built a fully automated DevSecOps CI/CD pipeline using GitHub Actions to securely build, test, package (Docker), and deploy a Node.js REST API to Kubernetes.</p>
           <ul>
-            <li>Implemented automated CI/CD pipeline triggers on repository updates.</li>
-            <li>Integrated comprehensive security checks and vulnerability scanning directly into the pipeline before final deployment.</li>
+            <li>Developed a secure backend microservice in Express.js, fortified with Helmet (HTTP headers), CORS, Morgan (logging), and automated Jest unit tests.</li>
+            <li>Engineered a "Shift-Left" CI/CD workflow that automatically triggers on every code push to compile the application and block failing tests.</li>
+            <li>Integrated aggressive security gating using Aqua Trivy (SAST/Container scanning) and npm audit (SCA) to physically block critical vulnerabilities and outdated dependencies from reaching production.</li>
+            <li>Automated Kubernetes deployments by actively validating infrastructure manifests (deployment.yaml) during the pipeline run to ensure zero-downtime releases.</li>
           </ul>
         </div>
         
         <div>
           <h3><span class="accent">3.</span> AWS Static Website Hosting</h3>
-          <p>Hosted a highly scalable, high-performance static website using AWS cloud architecture (S3, CloudFront) optimizing global content delivery and availability.</p>
+          <p>Created an EC2 instance via the AWS Console to host a static website returning 'hello from aws'. Configured Security Groups to allow SSH, HTTP, and HTTPS traffic. Implemented comprehensive instance monitoring and uptime tracking using AWS CloudWatch.</p>
         </div>
       </main>
     </div>
