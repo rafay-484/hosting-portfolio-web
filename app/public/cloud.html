@@ -19,8 +19,13 @@
         <h2><span class="accent-green">☁️</span> Cloud & DevOps Projects</h2>
         
         <div style="margin-bottom: 2rem;">
-          <h3><span class="accent">1.</span> Portfolio Website Infrastructure Deployment</h3>
-          <p>Developed a multi-page professional website hosted on AWS. Provisioned the entire network and EC2 infrastructure from scratch using Terraform. Implemented a fully automated CI/CD pipeline with GitHub Actions to deploy code updates seamlessly.</p>
+          <h3><span class="accent">1.</span> Portfolio Website Infrastructure Deployment (Real DevSecOps Flow)</h3>
+          <p>Developed and deployed this very multi-page professional portfolio website on AWS using Infrastructure as Code (IaC) and an automated CI/CD lifecycle.</p>
+          <ul>
+            <li><strong>AWS + Terraform (Production-Ready Architecture):</strong> Wrote real Terraform code to provision a custom AWS network from scratch, including a custom VPC (10.0.0.0/16), public subnets, an Internet Gateway, route tables, and strict Security Groups (HTTP + SSH).</li>
+            <li><strong>EC2 Automation:</strong> Configured a Terraform <code>user_data</code> bash script to automatically install Node.js, configure `iptables` port forwarding (80 -> 3000), clone the repository, and start the app process using PM2.</li>
+            <li><strong>CI/CD + AWS (Real DevOps Workflow):</strong> Built a fully automated CI/CD pipeline using GitHub Actions. Upon every code push, the pipeline authenticates via SSH, pulls the latest code to the EC2 instance, and automatically restarts the production server to achieve zero-downtime continuous deployment.</li>
+          </ul>
         </div>
         
         <div style="margin-bottom: 2rem;">
