@@ -1,0 +1,41 @@
+name: Deploy Portfolio to AWS EC2
+
+on:
+  push:
+    branches:
+      - main  # Trigger the pipeline automatically when code is pushed to the main branch
+  workflow_dispatch: # Allow manual triggering from the GitHub Actions tab
+
+jobs:
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Execute Deployment Commands on EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            echo "Starting deployment..."
+            
+            # Navigate to the application directory
+            cd /home/ec2-user/portfolio-app
+            
+            # Reset any local changes that shouldn't be there just in case
+            git reset --hard HEAD
+            
+            # Pull the absolute latest code that you just pushed to GitHub
+            git pull origin main
+            
+            # Move into the app folder, install any new NPM packages, and restart PM2
+            cd app
+            npm install
+            pm2 restart portfolio-web
+            
+            echo "Deployment completed successfully! 🚀"
