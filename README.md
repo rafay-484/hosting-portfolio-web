@@ -45,6 +45,13 @@ hosting-portfolio-web/
 └── 📄 README.md            # This documentation
 ```
 
+## ☁️ AWS & Terraform Deployment (Live Infrastructure)
+To move beyond local development, I completely provisioned real cloud infrastructure using **Infrastructure as Code (IaC)**.
+
+* **Terraform Configuration:** Located in the `/terraform` folder, the `.tf` scripts automatically spin up AWS networking (VPCs, Subnets, Security Groups) and a secure **EC2 Instance**.
+* **Live Deployment:** By running `terraform apply`, AWS dynamically allocates a public Elastic IP and auto-provisions the server using the `userdata` configuration.
+* **Cost Efficiency:** Note: The AWS resources are currently destroyed (`terraform destroy`) to optimize costs, but the Infrastructure as Code scripts ensure the entire production environment can be recreated in exactly 2 minutes.
+
 ## 💻 Local Development Setup
 
 ### Prerequisites
@@ -99,7 +106,7 @@ If Docker is not running, use:
 sudo service docker start
 ```
 Then run again:
-```bash
+```bashwhat 
 ./start-portfolio.sh
 ```
 
